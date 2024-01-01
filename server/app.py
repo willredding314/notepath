@@ -1,12 +1,17 @@
+import crypt
 from flask import Flask
-from flask_restful import Resource, Api
+from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
+from flask_login import LoginManager
 
 app = Flask(__name__)
-api = Api(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///notepathdb'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SESSION_TYPE'] = "sqlalchemy"
+app.secret_key = 'super secret string'
+
 db = SQLAlchemy()
-
-#api.add_resource(, '/')
-
-if __name__ == '__main__':
-    app.run(debug=True)
+migrate = Migrate()
+CORS(app, supports_credentials=True)
+login_manager = LoginManager()
