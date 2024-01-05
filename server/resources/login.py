@@ -1,5 +1,5 @@
 from flask import jsonify, request, session
-from flask_login import login_required, login_user
+from flask_login import login_required, login_user, current_user
 from flask_restful import Resource
 from models.user import User
 from app import db
@@ -7,8 +7,8 @@ from app import db
 class Login(Resource):
 
     def get(self):
-        if session.get("username") is not None:
-            return jsonify({"result": "success", "username": session["username"]})
+        if current_user.is_authenticated:
+            return jsonify({"result": "success", "username": current_user.username})
         else:
             return jsonify({"result": "failure"})      
 

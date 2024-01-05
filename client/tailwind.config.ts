@@ -23,6 +23,7 @@ const config: Config = {
       gray: '#767676',
       purple: '#2e0d3f',
       orange: '#fc6601',
+      darkgray: '#404040'
     }
   },
   plugins: [],

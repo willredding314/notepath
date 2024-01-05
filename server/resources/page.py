@@ -3,6 +3,7 @@ from flask_login import login_required
 from flask_restful import Resource
 from app import db
 from models.page import Page
+from flask_login import current_user
 
 class PageData(Resource):
 
@@ -10,7 +11,7 @@ class PageData(Resource):
     def get(self, id):
         page = Page.query.filter_by(id=id).first()
         if page is not None:
-            if page.owner == session["username"].username:
+            if page.owner == current_user.username:
                 return jsonify({"content": page.content})
             else:
                 return jsonify({"error": "Unauthorized"}), 401
@@ -22,7 +23,7 @@ class PageData(Resource):
         content = request.json["content"]
         page = Page.query.filter_by(id=id).first()
         if page is not None:
-            if page.owner == session["username"].username:
+            if page.owner == current_user.username:
                 page.content = content
                 db.session.commit()
                 return jsonify({"content": page.content})

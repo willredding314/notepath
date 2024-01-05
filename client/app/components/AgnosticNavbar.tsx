@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect, useState } from "react"
 import AnonNavbar from "./AnonNavbar"
 import AuthNavbar from "./AuthNavbar"

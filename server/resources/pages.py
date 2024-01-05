@@ -14,7 +14,6 @@ class Pages(Resource):
         if user is not None:
             if user.username == session['username']:
                 results = []
-                print(user.pages)
                 for page_title in user.pages:
                     page = Page.query.filter_by(name=page_title).first()
                     if page is not None:

@@ -22,7 +22,9 @@ const Stars = () => {
 
     const options: ISourceOptions = useMemo(
         () => ({
-            background: {},
+            background: {
+                color: "#2e0d3f"
+            },
             fpsLimit: 30,
             interactivity: {},
             particles: {
@@ -58,6 +60,7 @@ const Stars = () => {
 
     return (
         <Particles
+            className="fixed -z-10"
             id="tsparticles"
             particlesLoaded={particlesLoaded}
             options={options}

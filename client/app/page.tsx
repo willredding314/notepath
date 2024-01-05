@@ -1,13 +1,9 @@
 'use client'
 import API from "../api"
 import { useEffect, useMemo, useState } from 'react';
-import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import Banner from './components/AuthNavbar';
-import AnonNavbar from "./components/AnonNavbar";
-import AuthNavbar from "./components/AuthNavbar";
-import Stars from "./components/stars";
 import AgnosticNavbar from "./components/AgnosticNavbar";
+import Stars from "./components/stars";
 
 export default function Home() {
 
@@ -25,7 +21,7 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="bg-purple min-h-screen">
+    <div className="min-h-screen">
       <Stars />
       <AgnosticNavbar/>
       <div className="h-screen flex items-center justify-center columns-1">

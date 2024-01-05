@@ -10,6 +10,7 @@ from resources.register import Register
 from resources.pages import Pages
 from resources.page_ext import PageExternal
 from resources.page import PageData
+from resources.logout import Logout
 
 #########################################
 #               API SETUP               #
@@ -18,6 +19,7 @@ from resources.page import PageData
 api = Api()
 
 api.add_resource(Login, "/api/login")
+api.add_resource(Logout, "/api/logout")
 api.add_resource(Register, "/api/register")
 api.add_resource(Pages, "/api/<string:username>")
 api.add_resource(PageData, "/api/page/<string:id>")
@@ -32,6 +34,7 @@ api.init_app(app)
 @login_manager.user_loader
 def load_user(username):
     return User.query.filter_by(username=username).first()
+
 
 login_manager.init_app(app)
 
